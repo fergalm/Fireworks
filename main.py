@@ -70,7 +70,9 @@ def main():
         pygame.time.wait(40)
         #raw_input('%i: Hit RETURN' %(j))
         j+=1
-    
+
+    #Tidy up
+    pygame.display.quit()
 
 if __name__ == "__main__":
     main()
