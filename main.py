@@ -1,8 +1,31 @@
+#Fireworks
+#Let your child maul your keyboard while fireworks explode on the screen
+#$Id$
+#Copyright (C) 2012  Fergal Mullally
+
+#This program is free software; you can redistribute it and/or
+#modify it under the terms of the GNU General Public License
+#as published by the Free Software Foundation; either version 2
+#of the License, or (at your option) any later version.
+
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License
+#along with this program; if not, write to the Free Software
+#Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 
 import pygame
 from pygame.locals import *
-import Firework 
+import Firework
 
+#Note this is development code, and not intended for general use
+#It probably won't do anything bad to your computer, but I make
+#no promises.
+#Use [ESC] the [Y] to quit
 
 def main():
     pygame.init()
@@ -34,7 +57,7 @@ def main():
 
             if flag2:
                 #Quit if K_Y pressed within 5 seconds of flag2 being
-                #raised, otherwise unset flag2 
+                #raised, otherwise unset flag2
                 if e.key == K_y:
                     flag = False
                 elif pygame.time.get_ticks() - t1 > 5000:
@@ -65,8 +88,8 @@ def main():
                 break #Only remove one object at a time
         #print "Object list now has %i obj" %(len(objList))
 
-        
-        pygame.display.flip()        
+
+        pygame.display.flip()
         pygame.time.wait(40)
         #raw_input('%i: Hit RETURN' %(j))
         j+=1
