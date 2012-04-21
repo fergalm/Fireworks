@@ -66,7 +66,6 @@ def main():
             if len(objList) < maxObjects:
                 f = Firework.RingFirework(surface)
                 objList.append(f)
-                print f
             else:
                 print "Max objects exceeded"
 
