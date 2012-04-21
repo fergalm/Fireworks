@@ -41,7 +41,7 @@ def main():
     t1= 0
     flag, flag2 =True, False
     objList = []
-    maxObjects = 20
+    maxObjects = 40
     while flag:
         eventList = pygame.event.get(KEYDOWN)
         pygame.event.get()  #Throw away everything else
@@ -66,6 +66,7 @@ def main():
             if len(objList) < maxObjects:
                 f = Firework.RingFirework(surface)
                 objList.append(f)
+                print f
             else:
                 print "Max objects exceeded"
 

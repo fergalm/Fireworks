@@ -28,13 +28,15 @@ class RingFirework():
     def __init__(self, surface):
         self.surface = surface
 
-        x = min(surface.get_size())
-        self.maxSize = random.gauss( int(.18*x), int(.125*x))
+        x = float(min(surface.get_size()))
+        x1 = int(.1*x)
+        x2 = int(.25*x)
+        self.maxSize = random.randrange(x1 ,x2)
 
         self.innerRadius = 0
         self.outerRadius = 1
         speed = random.randrange(20, 30)
-        self.radiusStep = int(self.maxSize/speed)
+        self.radiusStep = int(self.maxSize/float(speed))
 
         red = random.randrange(64, 256, 64) #Off, on or half on
         green = random.randrange(64, 256, 64)
@@ -47,8 +49,8 @@ class RingFirework():
         self._isActive = True
 
     def __str__(self):
-        msg="Firework at (%i,%i) with size %i" \
-            %(self.xpos, self.ypos, self.maxSize)
+        msg="Firework at (%i,%i) with size %i (%i %i %.3f)" \
+            %(self.xpos, self.ypos, self.maxSize, self.innerRadius, self.outerRadius, self.radiusStep)
         return msg
 
     def __repr__(self):
