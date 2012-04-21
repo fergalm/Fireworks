@@ -1,27 +1,32 @@
+import random
+import pygame
+from pygame.color import Color
+
+
 class SquareFirework():
     def __init__(self, surface):
         self.surface = surface
 
         x = min(surface.get_size())
-        self.maxSize = random.gauss( int(.18*x), int(.125*x))
+        self.maxSize = random.randrange( int(.18*x), int(.25*x))
 
         self.innerRadius = 0
         self.outerRadius = 1
         speed = random.randrange(20, 30)
         self.radiusStep = int(self.maxSize/float(speed))
 
-        red = random.randrange(64, 256, 64) #Off, on or half on
+        red = random.randrange(64, 256, 64)
         green = random.randrange(64, 256, 64)
         blue = random.randrange(64, 256, 64)
         self.colour = Color(red, green, blue)
 
         (mxx, mxy) = surface.get_size()
-        self.xpos = random.randrange(mxx)
-        self.ypos = random.randrange(mxy)
+        self.xpos = random.randrange(mxx) - .5*self.maxSize
+        self.ypos = random.randrange(mxy) - .5*self.maxSize
         self._isActive = True
 
     def __str__(self):
-        msg="Firework at (%i,%i) with size %i" \
+        msg="Square at (%i,%i) with size %i" \
             %(self.xpos, self.ypos, self.maxSize)
         return msg
 
@@ -34,13 +39,21 @@ class SquareFirework():
         else:
             self.innerRadius += self.radiusStep
 
-        pos = [self.xpos, self.ypos]
-        rect = pygame.Rect((left, top), (width, height)):
-        self.surface.fill(elf.colour, rect)
+        size = self.outerRadius
+        left = self.xpos - .5*size
+        top = self.ypos - .5*size
+
+        rect = pygame.Rect((left, top), (size, size))
+
+        self.surface.fill(self.colour, rect)
 
         if self.innerRadius > 0:
-            black = Color(0,0,0)
-            pygame.draw.circle(self.surface, black, pos, self.innerRadius)
+            size = self.innerRadius
+            left = self.xpos - .5*size
+            top = self.ypos - .5*size
+            rect = pygame.Rect((left, top), (size, size))
+            black= Color(0,0,0)
+            self.surface.fill(black, rect)
 
         if self.innerRadius > self.maxSize+1:
             self._isActive = False

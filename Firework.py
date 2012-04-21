@@ -31,6 +31,7 @@ class RingFirework():
         x = float(min(surface.get_size()))
         x1 = int(.1*x)
         x2 = int(.25*x)
+        #Wouldn't Poisson be better?
         self.maxSize = random.randrange(x1 ,x2)
 
         self.innerRadius = 0

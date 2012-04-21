@@ -21,6 +21,9 @@
 import pygame
 from pygame.locals import *
 import Firework
+import square
+
+
 
 #Note this is development code, and not intended for general use
 #It probably won't do anything bad to your computer, but I make
@@ -31,8 +34,8 @@ def main():
     pygame.init()
     #Find screen size and pass to this function
     screenSize=pygame.display.list_modes()[0]
-    window = pygame.display.set_mode(screenSize, FULLSCREEN)
-    #window = pygame.display.set_mode((640,480))    #Useful for debugging
+    #window = pygame.display.set_mode(screenSize, FULLSCREEN)
+    window = pygame.display.set_mode((640,480))    #Useful for debugging
     pygame.display.set_caption('Fireworks!')
 
     surface = pygame.display.get_surface()
@@ -64,8 +67,10 @@ def main():
                     flag2 = False
 
             if len(objList) < maxObjects:
-                f = Firework.RingFirework(surface)
+                #f = Firework.RingFirework(surface)
+                f = square.SquareFirework(surface)
                 objList.append(f)
+                #print f
             else:
                 print "Max objects exceeded"
 
