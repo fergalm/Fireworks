@@ -20,8 +20,7 @@
 
 import pygame
 from pygame.locals import *
-import Firework
-import square
+from FireworkFactory import FireworkFactory
 
 
 
@@ -34,8 +33,8 @@ def main():
     pygame.init()
     #Find screen size and pass to this function
     screenSize=pygame.display.list_modes()[0]
-    #window = pygame.display.set_mode(screenSize, FULLSCREEN)
-    window = pygame.display.set_mode((640,480))    #Useful for debugging
+    window = pygame.display.set_mode(screenSize, FULLSCREEN)
+    #window = pygame.display.set_mode((640,480))    #Useful for debugging
     pygame.display.set_caption('Fireworks!')
 
     surface = pygame.display.get_surface()
@@ -45,6 +44,7 @@ def main():
     flag, flag2 =True, False
     objList = []
     maxObjects = 40
+    factory = FireworkFactory()
     while flag:
         eventList = pygame.event.get(KEYDOWN)
         pygame.event.get()  #Throw away everything else
@@ -67,8 +67,7 @@ def main():
                     flag2 = False
 
             if len(objList) < maxObjects:
-                #f = Firework.RingFirework(surface)
-                f = square.SquareFirework(surface)
+                f = factory.newFirework(surface)
                 objList.append(f)
                 #print f
             else:
