@@ -72,7 +72,7 @@ def main():
                 objList.append(f)
                 #print f
             else:
-                print "Max objects exceeded"
+                print "Max objects (%i) exceeded" %(maxObjects)
 
         for i, obj in enumerate(objList):
             obj.draw()
