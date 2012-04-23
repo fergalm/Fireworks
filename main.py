@@ -23,7 +23,7 @@ from pygame.locals import *
 from FireworkFactory import FireworkFactory
 
 #Todo:
-#o Fix leftovers
+#x Fix leftovers
 #o Fix popping
 #o An svnid tag equivalent
 
@@ -74,23 +74,10 @@ def main():
             else:
                 print "Max objects exceeded"
 
-        #Update fireworks
-        deadList = range(len(objList))
         for i, obj in enumerate(objList):
             obj.draw()
-            if obj.isActive():
-                deadList[i] = 0
-            else:
-                deadList[i] = 1
-
-        #Delete dead fireworks
-        #print deadList
-        for i in range(len(deadList)):
-            if deadList[i]>0:
+            if not obj.isActive():
                 objList.pop(i)
-                i=0
-                break #Only remove one object at a time
-        #print "Object list now has %i obj" %(len(objList))
 
 
         pygame.display.flip()
