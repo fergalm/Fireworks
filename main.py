@@ -24,7 +24,7 @@ from FireworkFactory import FireworkFactory
 
 #Todo:
 #x Fix leftovers
-#o Fix popping
+#x Fix popping
 #o An svnid tag equivalent
 
 #Note this is development code, and not intended for general use
@@ -36,8 +36,8 @@ def main():
     pygame.init()
     #Find screen size and pass to this function
     screenSize=pygame.display.list_modes()[0]
-    #window = pygame.display.set_mode(screenSize, FULLSCREEN)
-    window = pygame.display.set_mode((640,480))    #Useful for debugging
+    window = pygame.display.set_mode(screenSize, FULLSCREEN)
+    #window = pygame.display.set_mode((640,480))    #Useful for debugging
     pygame.display.set_caption('Fireworks!')
 
     surface = pygame.display.get_surface()
