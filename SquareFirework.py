@@ -19,7 +19,6 @@ class SquareFirework():
         green = random.randrange(64, 256, 64)
         blue = random.randrange(64, 256, 64)
         self.colour = Color(red, green, blue)
-        self.colour = Color(255, 20, 147)   #Deep pink
 
         (mxx, mxy) = surface.get_size()
         self.xpos = random.randrange(mxx) - .5*self.maxSize
