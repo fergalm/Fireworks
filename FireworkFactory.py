@@ -12,7 +12,10 @@ class FireworkFactory():
         """Key can be used to pass the key pressed"""
         val = random.randrange(2)
 
+        #Debugging code
+        #return RingFirework(pygameSurface, key)
+
         if val == 0:
-            return RingFirework(pygameSurface)
+            return RingFirework(pygameSurface, key)
         elif val == 1:
-            return SquareFirework(pygameSurface)
+            return SquareFirework(pygameSurface, key)

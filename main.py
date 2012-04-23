@@ -22,7 +22,10 @@ import pygame
 from pygame.locals import *
 from FireworkFactory import FireworkFactory
 
-
+#Todo:
+#o Fix leftovers
+#o Fix popping
+#o An svnid tag equivalent
 
 #Note this is development code, and not intended for general use
 #It probably won't do anything bad to your computer, but I make
@@ -33,8 +36,8 @@ def main():
     pygame.init()
     #Find screen size and pass to this function
     screenSize=pygame.display.list_modes()[0]
-    window = pygame.display.set_mode(screenSize, FULLSCREEN)
-    #window = pygame.display.set_mode((640,480))    #Useful for debugging
+    #window = pygame.display.set_mode(screenSize, FULLSCREEN)
+    window = pygame.display.set_mode((640,480))    #Useful for debugging
     pygame.display.set_caption('Fireworks!')
 
     surface = pygame.display.get_surface()
@@ -48,8 +51,6 @@ def main():
     while flag:
         eventList = pygame.event.get(KEYDOWN)
         pygame.event.get()  #Throw away everything else
-        #print "Eventlist",
-        #print eventList
         for e in eventList:
             if e.key == K_ESCAPE:
                 flag2 = True
@@ -67,13 +68,12 @@ def main():
                     flag2 = False
 
             if len(objList) < maxObjects:
-                f = factory.newFirework(surface)
+                f = factory.newFirework(surface, e.key)
                 objList.append(f)
                 #print f
             else:
                 print "Max objects exceeded"
 
-        #print "%i new fireworks => %i objects" %(len(eventList), len(objList))
         #Update fireworks
         deadList = range(len(objList))
         for i, obj in enumerate(objList):

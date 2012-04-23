@@ -25,7 +25,7 @@ from pygame.color import Color
 
 class RingFirework():
     #@TODO surface is set as part of init
-    def __init__(self, surface):
+    def __init__(self, surface, key=None):
         self.surface = surface
 
         x = float(min(surface.get_size()))
@@ -60,6 +60,8 @@ class RingFirework():
     def draw(self):
         if self.outerRadius < self.maxSize:
             self.outerRadius += self.radiusStep
+            #Don't let outerRadius get too big
+            self.outerRadius = min(self.maxSize, self.outerRadius)
         else:
             self.innerRadius += self.radiusStep
 
@@ -70,7 +72,7 @@ class RingFirework():
             black = Color(0,0,0)
             pygame.draw.circle(self.surface, black, pos, self.innerRadius)
 
-        if self.innerRadius > self.maxSize+1:
+        if self.innerRadius > self.maxSize:
             self._isActive = False
 
     def isActive(self):
